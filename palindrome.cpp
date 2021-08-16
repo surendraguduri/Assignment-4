@@ -5,7 +5,7 @@ int main()
 	int i,c=0;
 	char s[100];
 	char p[100];
-	gets(s);
+	scanf("%s ",s);
 	for(i=0;i<strlen(s);i++)
 	{
 		p[i]=s[strlen(s)-1-i];
@@ -26,4 +26,3 @@ int main()
 		printf(" Not Palindrome");
 	}
 }
-
