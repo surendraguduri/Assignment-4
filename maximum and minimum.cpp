@@ -1,7 +1,6 @@
-//Here using quick sort algorithm for sorting the array
+//Here using bubble sort algorithm for sorting the array
 #include <stdio.h>
-void quick_sort(int[],int,int);
-int partition(int[],int,int);
+void bubble_sort(int a[],int n);
  
 int main()
 {
@@ -11,7 +10,7 @@ int main()
 	{
 		scanf("%d",&a[i]);
 	}
-	quick_sort(a,0,n-1);
+	bubble_sort(a,n);
 	printf("\nArray after sorting:");
 	for(i=0;i<n;i++)
 	{
@@ -22,42 +21,27 @@ int main()
 	return 0;
 }
  
-void quick_sort(int a[],int s,int e)
+void bubble_sort(int a[],int n)
 {
-	int j;
-	if(s<e)
-	{
-	j=partition(a,s,e);
-	quick_sort(a,s,j-1);
-	quick_sort(a,j+1,e);
-	}
-}
- 
-int partition(int a[],int s,int e)
-{
-	int p,i,j,temp;
-	p=a[s];
-	i=s;
-	j=e;
-	while(i<j)
-	{
-		while(a[i]<=p)
-		{
-		i++;
-		}
-		while(a[j]>p)
-		{
-			j--;
-		}
-		if(i<j)
-		{
-			temp=a[i];
-			a[i]=a[j];
-			a[j]=temp;
-		}
-	}
-	a[s]=a[j];
-	a[j]=p;
-	return j;
+    //Best case is:elements in ascending order
+    //worse case is:elements in descending order
+    int i,j,flag,temp;
+    for(i=0;i<n-1;i++)
+    {
+        flag=0;
+        for(j=0;j<n-1-i;j++)
+        {
+            if(a[j]>a[j+1])//swapping
+            {
+                temp=a[j];
+                a[j]=a[j+1];
+                a[j+1]=temp;
+                flag=1;//flag is to check sorted or not
+            }
+        }
+        if(flag==0)
+        {
+            break;
+        }
 }
 
